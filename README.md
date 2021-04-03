@@ -1,4 +1,4 @@
-# Kali Vm in Vagrant with RDP
+# Kali + Vagrant with RDP
 
 ### Goal
 
@@ -6,22 +6,17 @@ Build your own VM Kali Linux in Windows with Vagrant, and access in RDP from you
 
 Ok with a VPS it's quite simple, but if you prefer doing your business in local, it's a good solution !
 
-**Configuration**
+**Prerequisite**
 >>>
 
-* **OS** : Kali linux
-* **Nom machine**: kali.local
+* Windows Environment + [Vagrant](https://www.vagrantup.com/intro/getting-started/install.html)
+* Macbook Pro or equivalent + [Microsoft Remote Desktop](https://apps.apple.com/fr/app/microsoft-remote-desktop/id1295203466?mt=12) 
 
 >>>
-
-**prerequisite**
-
-Windows Environment + [Vagrant](https://www.vagrantup.com/intro/getting-started/install.html)
-Macbook Pro or equivalent + [Microsoft Remote Desktop](https://apps.apple.com/fr/app/microsoft-remote-desktop/id1295203466?mt=12) 
 
 ### Setting up Kali linux
 
-Create the repository `C:\workspaces\kali` and include files from this repository inside.
+Create the repository `C:\workspaces\kali` and clone this repository inside.
 
 Depend on the configuration of your PC, You'll probably need to custom the following values in `Vagrantfile`.
 
