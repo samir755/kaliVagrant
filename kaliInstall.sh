@@ -8,7 +8,13 @@ echo "
 "
 
 # Nettoyage des dépendences
-apt-get -y update
+export UCF_FORCE_CONFFNEW=YES
+ucf --purge /boot/grub/menu.lst
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
+
 rm -rf /var/lib/apt/lists/*
 apt-get -y update
 
@@ -23,11 +29,9 @@ echo "127.0.1.1 kali.local" >> /etc/hosts
 hostname kali.local
 
 # Changement du MDP vagrant
+adduser --disabled-password --gecos "" kali
 echo "kali:vagrant" | chpasswd
-
-# Ajout du compte Kali pour la connexion rdp
-useradd -m -p vagrant -s /bin/bash kalirdp
-sudo usermod -aG sudo kalirdp
+sudo usermod -aG sudo kali
 
 #Install XRDP
 apt-get install xrdp -y
@@ -37,15 +41,23 @@ sed -i 's/xserverbpp=24/#xserverbpp=24\nxserverbpp=128/g' /etc/xrdp/xrdp.ini
 
 cp /vagrant/45-allow-colord.pkla /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 
+apt-get remove xorgxrdp
 systemctl enable xrdp
 service xrdp start
 
 # Set keyboard to French
-sed -i "s/en/fr/g" /etc/default/keyboard
+sed -i "s/us/fr/g" /etc/default/keyboard
 
 # Keyboard config for macbook pro
-cp /vagrant/Xmodmap /home/kalirdp/.Xmodmap
+cp /vagrant/Xmodmap /home/kali/.Xmodmap
+
+# Changement de la résolution
+echo "xrandr --output Virtual1 --mode 1920x1440" > /home/vagrant/.Xprofile
+chmod +x /home/vagrant/.Xprofile
+
+# Fix bug
+sed -i "s/bin\/sh/bin\/bash/g" /etc/xrdp/startwm.sh
+
 
 echo "Congrats, Kali linux is install !"
-
 exit
