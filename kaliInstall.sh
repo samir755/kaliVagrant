@@ -41,7 +41,6 @@ sed -i 's/xserverbpp=24/#xserverbpp=24\nxserverbpp=128/g' /etc/xrdp/xrdp.ini
 
 cp /vagrant/45-allow-colord.pkla /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 
-apt-get remove xorgxrdp
 systemctl enable xrdp
 service xrdp start
 
@@ -58,6 +57,16 @@ chmod +x /home/vagrant/.Xprofile
 # Fix bug
 sed -i "s/bin\/sh/bin\/bash/g" /etc/xrdp/startwm.sh
 
+echo "###################################################"
+echo "######## Congrats, Kali linux is install ! ########"
+echo "###################################################"
+echo ""
+echo "Login:pass for local VM: vagrant:vagrant"
+echo "Login:pass for local VM: kali:vagrant"
+echo ""
+echo "By Sa33rix"
 
-echo "Congrats, Kali linux is install !"
+shutdown -r now
+echo "Service restarted"
+
 exit
