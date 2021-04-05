@@ -41,3 +41,8 @@ User account: kali:vagrant
 
 Account in your host VM vagrant:vagrant
 ```
+
+## Note
+
+If your RDP connexion is slow, change your Color Quality in Microsoft Remote Desktop to 16 bit.
+

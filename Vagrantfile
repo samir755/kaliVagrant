@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
     vb.gui = true
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
     vb.customize ["modifyvm", :id, "--cpus", "4"]
+    vb.customize ["modifyvm", :id, "--graphicscontroller", "vboxsvga"]
+    vb.customize ["modifyvm", :id, "--vram", "256"]
     vb.customize ["modifyvm", :id, "--memory", "8192"]
     vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
     vb.name = "dev.kali.local"
