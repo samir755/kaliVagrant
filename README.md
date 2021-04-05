@@ -44,5 +44,12 @@ Account in your host VM vagrant:vagrant
 
 ## Note
 
-If your RDP connexion is slow, change your Color Quality in Microsoft Remote Desktop to 16 bit.
+RDP connexion is slow ? change your Color Quality in Microsoft Remote Desktop to 16 bit.
 
+Black screen ? Try to reboot Xrdp service:
+
+``` bash
+vagrant ssh
+
+sudo service xrdp restart
+```
